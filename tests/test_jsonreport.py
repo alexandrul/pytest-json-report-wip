@@ -206,7 +206,7 @@ def test_report_crash_and_traceback(tests):
             'message': 'TypeError'
         }
     ]
-    if sys.version_info < (3,):
+    if sys.version_info[:2] == (3, 12):
         del traceback[2]
     assert call['traceback'] == traceback
 
