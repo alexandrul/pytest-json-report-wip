@@ -112,11 +112,12 @@ def num_processes(request):
 
 @pytest.fixture
 def make_json(num_processes, testdir):
-    def func(content=FILE, args=['-vv', '--json-report', '-n=%d' %
-             num_processes], path='.report.json'):
+    def func(content=FILE, args=None, path='.report.json'):
+        if args is None:
+            args = ['-vv', '--json-report', '-n=%d' % num_processes]
         testdir.makepyfile(content)
         testdir.runpytest(*args)
-        with open(str(testdir.tmpdir / path)) as f:
+        with (testdir.tmpdir / path).open() as f:
             data = json.load(f)
         return data
     return func
@@ -167,10 +168,10 @@ def diff(a, b, path=None):
     # with and without workers
     if path and path[-1] != 'longrepr':
         return
-    if type(a) != type(b):
+    if type(a) is not type(b):
         yield ('T', path, a, b)
         return
-    if type(a) == dict:
+    if isinstance(a, dict):
         a_keys = sorted(a.keys())
         b_keys = sorted(b.keys())
         if a_keys != b_keys:
@@ -180,7 +181,7 @@ def diff(a, b, path=None):
             for item in diff(a[ak], b[bk], path + [str(ak)]):
                 yield item
         return
-    if type(a) == list:
+    if isinstance(a, list):
         for i, (ai, bi) in enumerate(zip(a, b)):
             for item in diff(ai, bi, path + [str(i)]):
                 yield item

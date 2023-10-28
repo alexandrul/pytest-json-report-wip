@@ -61,10 +61,16 @@ def test_terminal_summary(misc_testdir):
 
 def test_report_keys(num_processes, make_json):
     data = make_json()
-    keys = set([
-        'created', 'duration', 'environment', 'collectors', 'tests', 'summary',
-        'root', 'exitcode'
-    ])
+    keys = {
+        'created',
+        'duration',
+        'environment',
+        'collectors',
+        'tests',
+        'summary',
+        'root',
+        'exitcode'
+    }
     if num_processes > 0:
         # xdist only reports failing collectors
         keys.remove('collectors')
