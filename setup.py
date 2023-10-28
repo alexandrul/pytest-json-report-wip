@@ -14,14 +14,14 @@ with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
 
 
 setup(
-    name='pytest-json-report',
+    name='pytest-json-report-wip',
     description='A pytest plugin to report test results as JSON files',
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=['pytest_jsonreport'],
     author='numirias',
     author_email='numirias@users.noreply.github.com',
-    version='1.5.0',
+    version='1.5.1',
     url='https://github.com/numirias/pytest-json-report',
     license='MIT',
     install_requires=[
