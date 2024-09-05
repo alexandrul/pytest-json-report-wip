@@ -87,10 +87,10 @@ def test_report_collectors(num_processes, make_json):
         # xdist only reports failing collectors
         assert len(collectors) == 0
         return
-    assert len(collectors) == 2
+    assert len(collectors) == 3
     assert all(c['outcome'] == 'passed' for c in collectors)
-    assert collectors[0] == {
-        'nodeid': '',
+    assert collectors[2] == {
+        'nodeid': '.',
         'outcome': 'passed',
         'result': [
             {
