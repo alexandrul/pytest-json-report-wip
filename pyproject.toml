@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytest-json-report-wip"
+dynamic = ["version"]
+description = "A pytest plugin to report test results as JSON files"
+readme = "README.md"
+license = "MIT"
+authors = [
+  {name = "numirias", email = "numirias@users.noreply.github.com"},
+]
+keywords = [
+  "pytest",
+  "json",
+  "report",
+  "plugin",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Framework :: Pytest",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "pytest-metadata>=3.0.0",
+  "pytest>=8.1",
+]
+requires-python = ">=3.9"
+
+[project.entry-points.pytest11]
+pytest_jsonreport = "pytest_jsonreport.plugin"
+
+[project.urls]
+"Homepage" = "https://github.com/numirias/pytest-json-report"
+"Fork" = "https://github.com/alexandrul/pytest-json-report-wip"
+
+
+[tool.hatch.envs.hatch-test]
+extra-dependencies = ["flaky"]
+
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.12", "3.11", "3.10", "3.9"]
+
+[tool.hatch.envs.lint]
+skip-install = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pytest_jsonreport"]
+
+[tool.hatch.version]
+path = "src/pytest_jsonreport/__about__.py"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+  "ignore::pytest.PytestReturnNotNoneWarning",
+]
