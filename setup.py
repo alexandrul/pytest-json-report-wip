@@ -25,7 +25,7 @@ setup(
     url='https://github.com/numirias/pytest-json-report',
     license='MIT',
     install_requires=[
-        'pytest>=3.8.0',
+        'pytest>=8.4.1',
         'pytest-metadata>=3.0.0',
     ],
     entry_points={
@@ -37,10 +37,11 @@ setup(
         'Development Status :: 4 - Beta',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
         'Framework :: Pytest',
     ],
 )

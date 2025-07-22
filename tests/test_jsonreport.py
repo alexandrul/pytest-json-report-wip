@@ -81,10 +81,10 @@ def test_report_collectors(num_processes, make_json):
         # xdist only reports failing collectors
         assert len(collectors) == 0
         return
-    assert len(collectors) == 2
+    assert len(collectors) == 3
     assert all(c['outcome'] == 'passed' for c in collectors)
-    assert collectors[0] == {
-        'nodeid': '',
+    assert collectors[2] == {
+        'nodeid': '.',
         'outcome': 'passed',
         'result': [
             {
@@ -200,7 +200,7 @@ def test_report_crash_and_traceback(tests):
             'message': 'TypeError'
         }
     ]
-    if sys.version_info < (3,):
+    if sys.version_info[1] in [12, 13]:
         del traceback[2]
     assert call['traceback'] == traceback
 

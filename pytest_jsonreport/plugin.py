@@ -262,7 +262,7 @@ class JSONReport(JSONReportBase):
         Raises an exception if saving failed.
         """
         if self.report is None:
-            raise Exception('could not save report: no report available')
+            raise RuntimeError('could not save report: no report available')
         # Create path if it doesn't exist
         dirname = os.path.dirname(path)
         if dirname:
