@@ -1,13 +1,3 @@
-__pycache__/
 *.py[cod]
-*$py.class
-*.egg-info/
 .coverage
-.cache/
-.report.json
-TODO
-.tox
-build/
-dist/
-.pytest_cache/
-.coverage.*
+coverage.*

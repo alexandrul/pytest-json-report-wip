@@ -1,0 +1,79 @@
+[build-system]
+requires = ["uv_build>=0.8.0,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "pytest_jsonreport"
+
+[project]
+name = "pytest-json-report-wip"
+version = "1.5.2a4"
+description = "A pytest plugin to report test results as JSON files"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "numirias"}]
+maintainers = [{name = "Eduard-Cristian Stefan"}]
+keywords = [
+    "json",
+    "jsonreport",
+    "plugin",
+    "pytest",
+    "report",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Pytest",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python",
+]
+dependencies = [
+    "pytest-metadata>=3.0.0",
+    "pytest>=8.4.1",
+]
+
+[project.optional-dependencies]
+cov = [
+    "coverage",
+]
+dev = [
+    "flaky",
+    "pytest-xdist",
+]
+
+[project.entry-points.pytest11]
+pytest_jsonreport = "pytest_jsonreport.plugin"
+
+[project.urls]
+"Homepage" = "https://github.com/alexandrul/pytest-json-report-wip"
+"Issues" = "https://github.com/alexandrul/pytest-json-report-wip/issues"
+"Source" = "https://github.com/alexandrul/pytest-json-report-wip"
+"Upstream Issues" = "https://github.com/numirias/pytest-json-report/issues"
+"Upstream Source" = "https://github.com/numirias/pytest-json-report"
+
+[tool.coverage]
+html.directory = "coverage_html_report"
+report.ignore_errors = true
+run.branch = true
+run.source = ["pytest_jsonreport"]
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::pytest.PytestReturnNotNoneWarning",
+]
+testpaths = ["tests"]
+
+[tool.ruff]
+format.line-ending = "lf"
+line-length = 88
+lint.ignore = ["E501"]
+lint.isort.force-single-line = true
+lint.select = ["I"]
+target-version = "py39"
